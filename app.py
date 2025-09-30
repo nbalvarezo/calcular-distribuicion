@@ -1,12 +1,21 @@
-from openpyxl import Workbook
-from openpyxl.styles import Font, Alignment
+
 
 #Pago_Principal=Monto_Total−∑(Pagos_Adicionales)
 
 
+# principal: 64409
+# 1: 10083
+# 2: 1275
+# 3: 9919
+# 4: 9182
+# $516100
+
+from openpyxl import Workbook
+from openpyxl.styles import Font, Alignment
+
 def calcular_distribucion(consumo_principal, consumos_adicionales, monto_total):
     total_adicionales_kWh = sum(consumos_adicionales)
-    total_general = consumo_principal - total_adicionales_kWh
+    total_general = consumo_principal + total_adicionales_kWh
 
     resultados = []
 
@@ -42,7 +51,7 @@ def mostrar_en_consola(resultados, total_adicionales, total_general, monto_total
               f"Paga: ${r['Monto a pagar ($)']:.2f}")
 
     print(f"\nTotal adicionales: {total_adicionales:.2f} kWh")
-    print(f"Total general: {total_general} kWh")
+    print(f"Total general: {total_general:.2f} kWh")
     print(f"Monto total de la cuenta: ${monto_total:.2f}")
 
 def exportar_excel(resultados, total_adicionales, total_general, monto_total, filename="reporte_consumo.xlsx"):
@@ -67,7 +76,7 @@ def exportar_excel(resultados, total_adicionales, total_general, monto_total, fi
 
     ws.append([])
     ws.append(["TOTAL adicionales", total_adicionales, "-", "-"])
-    ws.append(["TOTAL general", total_general, "100%", round(monto_total, 2)])
+    #ws.append(["TOTAL general", total_general, "100%", round(monto_total, 2)])
 
     wb.save(filename)
     print(f"\n✅ Reporte guardado en: {filename}")
