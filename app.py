@@ -2,26 +2,26 @@
 
 #Pago_Principal=Monto_Total−∑(Pagos_Adicionales)
 
-
-# principal: 64409
-# 1: 10083
-# 2: 1275
-# 3: 9919
-# 4: 9182
-# $516100
+# Septiembre 30, 2025
+# Mdidor principal: 64409
+# Medidor 1: 10083
+# Medidor 2: 1275
+# Medidor 3: 9919
+# Medidor 4: 9182
+# Total cuenta: $516100
 
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment
 
 def calcular_distribucion(consumo_principal, consumos_adicionales, monto_total):
     total_adicionales_kWh = sum(consumos_adicionales)
-    total_general = consumo_principal + total_adicionales_kWh
+    total_general = consumo_principal
+    # total_general = consumo_principal + total_adicionales_kWh
 
     resultados = []
 
     # Medidores adicionales
-    for i, consumo in enumerate(consumos_adicionales, start=1):
-        porcentaje = (consumo / total_general * 100) if total_general > 0 else 0
+    for i, consumo in enumerate(consumos_adicionales, start=1):Mdidor p        porcentaje = (consumo / total_general * 100) if total_general > 0 else 0
         pago = (consumo / total_general * monto_total) if total_general > 0 else 0
         resultados.append({
             "Medidor": f"Adicional {i}",
