@@ -2,13 +2,17 @@
 
 #Pago_Principal=Monto_Total−∑(Pagos_Adicionales)
 
-# Septiembre 30, 2025
-# Mdidor principal: 64409
+### Septiembre 30, 2025
+#
+# Medidor principal: 64409
+#
 # Medidor 1: 10083
 # Medidor 2: 1275
 # Medidor 3: 9919
+
 # Medidor 4: 9182
-# Total cuenta: $516100
+#
+### Total cuenta: $516100
 
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment
